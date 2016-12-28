@@ -26,25 +26,22 @@ public class ParameterWindow extends Frame{
 	}
 
 	public ParameterWindow(){
-		this.setSize(WWIDTH, WHEIGHT);
+		setParameterWindoe();
+
+	}
+
+	public void setParameterWindoe(){
+		//this.setSize(WWIDTH, WHEIGHT);
+		this.setBounds(100, 100, WWIDTH, WHEIGHT);			//親ウィンドウの表示位置、サイズに合わせて表示するように設定する
 		addWindowListener(new MyWindowAdapter());
 
 		GridBagLayout layout = new GridBagLayout();
 		this.setLayout(layout);
 		GridBagConstraints gbc = new GridBagConstraints();
 
-
-
-
-
-
-
-
-
-		//
+		//背景色
 		gbc.insets = new Insets(5,5,5,5);
 		gbc.gridx=0;gbc.gridy=0;gbc.anchor=GridBagConstraints.EAST;		//ラベル位置の設定
-		gbc.weightx=16;gbc.weighty=0;
 		Label label1 = new Label("Background Color:      ");			//ラベル名
 		layout.setConstraints(label1, gbc);								//レイアウトにラベル位置の設定
 		Choice back_color = new Choice();								//
@@ -53,12 +50,10 @@ public class ParameterWindow extends Frame{
 		}
 		back_color.addItemListener(new BackColorItemListener());		//チョイスにリスナーを付加
 		gbc.gridx=1;gbc.gridy=0;gbc.anchor=GridBagConstraints.WEST;		//チョイス位置の設定
-		gbc.weightx=0.2;gbc.weighty=0;
 		layout.setConstraints(back_color, gbc);							//レイアウトにチョイス位置の設定
 
-		//
+		//文字色
 		gbc.gridx=0;gbc.gridy=1;gbc.anchor=GridBagConstraints.EAST;
-		gbc.weightx=0;gbc.weighty=0;
 		Label label2 = new Label("Font Color:      ");
 		layout.setConstraints(label2, gbc);
 		Choice font_color = new Choice();
@@ -67,12 +62,10 @@ public class ParameterWindow extends Frame{
 		}
 		font_color.addItemListener(new FontColorItemListener());
 		gbc.gridx=1;gbc.gridy=1;gbc.anchor=GridBagConstraints.WEST;
-		gbc.weightx=0;gbc.weighty=0;
 		layout.setConstraints(font_color, gbc);
 
-		//
+		//フォントサイズ
 		gbc.gridx=0;gbc.gridy=2;gbc.anchor=GridBagConstraints.EAST;
-		gbc.weightx=0;gbc.weighty=0;
 		Label label3 = new Label("Font Size:      ");
 		layout.setConstraints(label3, gbc);
 		Choice font_size = new Choice();
@@ -81,12 +74,10 @@ public class ParameterWindow extends Frame{
 		}
 		font_size.addItemListener(new FontSizeItemListener());
 		gbc.gridx=1;gbc.gridy=2;gbc.anchor=GridBagConstraints.WEST;
-		gbc.weightx=0;gbc.weighty=0;
 		layout.setConstraints(font_size, gbc);
 
-		//
+		//フォント
 		gbc.gridx=0;gbc.gridy=3;gbc.anchor=GridBagConstraints.EAST;
-		gbc.weightx=0;gbc.weighty=0;
 		Label label4 = new Label("Font:      ");
 		layout.setConstraints(label4, gbc);
 		Choice font = new Choice();
@@ -95,25 +86,22 @@ public class ParameterWindow extends Frame{
 		}
 		font.addItemListener(new FontItemListener());
 		gbc.gridx=1;gbc.gridy=3;gbc.anchor=GridBagConstraints.WEST;
-		gbc.weightx=0;gbc.weighty=0;
 		layout.setConstraints(font, gbc);
 
-		//
-		gbc.insets = new Insets(50,5,5,5);
+
+		//ボタンの実装
+		gbc.insets = new Insets(50,10,10,10);
 		gbc.gridx=2;gbc.gridy=5;gbc.anchor=GridBagConstraints.SOUTH;
-		gbc.weightx=0.2;gbc.weighty=0;
-		Button button1 = new Button("Initializing");
+		Button button1 = new Button("Default");
 		button1.addActionListener(new ButtonActionListener());
 		layout.setConstraints(button1, gbc);
 
 		gbc.gridx=3;gbc.gridy=5;gbc.anchor=GridBagConstraints.SOUTH;
-		gbc.weightx=0.2;gbc.weighty=0;
 		Button button2 = new Button("OK");
 		button1.addActionListener(new ButtonActionListener());
 		layout.setConstraints(button2, gbc);
 
 		gbc.gridx=4;gbc.gridy=5;gbc.anchor=GridBagConstraints.SOUTH;
-		gbc.weightx=0.2;gbc.weighty=0;
 		Button button3 = new Button("Cancel");
 		button1.addActionListener(new ButtonActionListener());
 		layout.setConstraints(button3, gbc);
@@ -131,7 +119,6 @@ public class ParameterWindow extends Frame{
 		this.add(button2);
 		this.add(button3);
 		this.setVisible(true);
-
 	}
 
 	////////内部クラスとしてチョイスのアイテムリスナーとボタンのアクションリスナーを持つ/////////
@@ -172,6 +159,13 @@ public class ParameterWindow extends Frame{
 
 	}
 
+	//ボタンアクションリスナー
+	class ButtonActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			//押されたボタンに応じて実行切り替え
+
+		}
+	}
 
 	class MyWindowAdapter extends WindowAdapter {
 	    public void windowClosing(WindowEvent e) {
@@ -180,13 +174,7 @@ public class ParameterWindow extends Frame{
 	}
 
 
-	class ButtonActionListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			//押されたボタンに応じて実行切り替え
 
-		}
-	}
 
 	//
 
